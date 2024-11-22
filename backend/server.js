@@ -20,7 +20,7 @@ const { getDefaultAutoSelectFamilyAttemptTimeout } = require("net");
 
 app.use(cookieParser())
 const corsOptions = {
-    origin : "http://localhost:5173",
+    origin : ["https://coderhouse-teal.vercel.app/"],
     methods : ["GET", "POST"],
     credentials : true
 }
