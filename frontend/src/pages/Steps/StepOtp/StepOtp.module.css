@@ -1,0 +1,6 @@
+.actionButtonWrap{
+    composes : actionButtonWrap from "../../../App.module.css";
+}
+.bottomPara{
+    composes : bottomPara from "../../../App.module.css";
+}

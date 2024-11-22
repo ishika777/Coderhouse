@@ -1,0 +1,26 @@
+.buttonWrapper{
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 5px;
+}
+.tabButton{
+    width: fit-content;
+    height: fit-content;
+    padding: 5px 10px;
+    background-color: #262626;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.active{
+    background-color: #0077ff;
+}
+.actionButtonWrap{
+    composes : actionButtonWrap from "../../../App.module.css";
+}
+.bottomPara{
+    composes : bottomPara from "../../../App.module.css";
+}
