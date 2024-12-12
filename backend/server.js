@@ -150,6 +150,7 @@ io.on("connection", (socket) => {
     socket.on("disconnecting", leaveRoom)
 })
 
+app.use('/storage', express.static(path.join(__dirname, 'storage')));
 app.use(express.static(path.join(_dirname, "frontend/dist")))
 
 app.get("*", (_, res) => {
