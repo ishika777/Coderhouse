@@ -13,12 +13,6 @@ const useWebRtc = (roomId, user) => {
     const socket = useRef(null);
     const clientsRef = useRef([])
 
-
-    // useEffect(() => {
-    //     socket.current = socketInit();
-    // }, [])
-
-
     const addNewClient = useCallback((newClient, cb) => {
         const lookingFor = clients.find((client) => client.id === newClient.id)
         if(lookingFor === undefined){

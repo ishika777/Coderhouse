@@ -27,11 +27,18 @@ const corsOptions = {
 app.use(cors(corsOptions))
 app.use("/storage", express.static("storage"))
 
+const url = process.env.DB_URL
+// const url = "mongodb://127.0.0.1:27017/webrtc"
 
 main().then(() => console.log("connected to db")).catch(err => console.log(err));
 
 async function main() {
-  await mongoose.connect(process.env.DB_URL);
+  await mongoose.connect(url, {useNewUrlParser: true, 
+    useUnifiedTopology: true,
+    connectTimeoutMS: 30000, // Increased timeout duration
+    socketTimeoutMS: 45000, 
+    ssl: true,
+    retryWrites: true});
 }
 
 
@@ -92,7 +99,6 @@ io.on("connection", (socket) => {
         })
     })
 
-
     //handle mute, unmute
     socket.on(ACTIONS.MUTE, ({roomId, userId}) => {
  
@@ -114,9 +120,8 @@ io.on("connection", (socket) => {
                 userId
             })
         })
+    
     })
-
-
 
     //handle leave
     const leaveRoom = async({roomId}) => {

@@ -25,7 +25,6 @@ class RoomService{
     }
 
     searchRoom = async(query) => {
-        console.log(query)
         let rooms = [];
         const all = await Room.find({}).populate("speakers");
         for(let i of all){

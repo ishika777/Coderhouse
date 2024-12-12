@@ -73,6 +73,8 @@ class AuthController{
 
     verifyOtp = async (req, res) => {
 
+        // res.json({message : "helo"})
+
         const {otp, hash, field} = req.body;
         if(!otp || !hash || !field){
             return res.status(400).json({message : "All fields are requires"});
@@ -91,10 +93,12 @@ class AuthController{
             console.log("hi")
             return res.status(400).json({message : "Invalid OTP"})
         }
+        console.log("reached1")
 
         let user;
         try {
             user = await UserService.findUser({field})
+            console.log(user)
             if(!user){
                 user = await UserService.createUser({field})
             }
@@ -102,6 +106,8 @@ class AuthController{
             console.log(error)
             return res.status(500).json({message : "db error"})
         }
+
+        console.log("reached2")
 
         const {accessToken, refreshToken} = TokenService.generateTokens({_id : user._id, activated : false});
 

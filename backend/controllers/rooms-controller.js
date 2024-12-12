@@ -36,7 +36,6 @@ class RoomsController{
 
     search = async (req, res) => {
         const query = req.body.topic.toLowerCase();
-        console.log(query)
         const room = await RoomService.searchRoom(query)
         return res.json(room);
     }
