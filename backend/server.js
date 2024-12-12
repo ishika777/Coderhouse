@@ -11,7 +11,7 @@ const path = require("path")
 const Router = require("./routes/auth-route");
 const io = require("socket.io")(server, {
     cors : {
-        origin : "http://localhost:5173",
+        origin : "https://coderhouse-nw8l.onrender.com",
         methods : ["GET", "POST"],
     }
 })
@@ -21,7 +21,7 @@ const io = require("socket.io")(server, {
 const _dirname = path.resolve()
 app.use(cookieParser())
 const corsOptions = {
-    origin : ["http://localhost:5173"],
+    origin : ["https://coderhouse-nw8l.onrender.com"],
     methods : ["GET", "POST"],
     credentials : true
 }

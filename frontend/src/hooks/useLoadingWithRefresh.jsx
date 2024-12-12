@@ -12,7 +12,7 @@ const useLoadingWithRefresh = () => {
     useEffect(() => {
         (async () => {
             try {
-                const {data} = await axios.get("http://localhost:3000/api/refresh", {
+                const {data} = await axios.get("https://coderhouse-nw8l.onrender.com/api/refresh", {
                     withCredentials : true
                 })
                 dispatch(setAuth(data))

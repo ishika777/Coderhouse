@@ -7,7 +7,7 @@ const socketInit = () => {
         timeout : 10000,
         transports : ["websocket"],
     }
-    return io("http://localhost:3000", options)
+    return io("https://coderhouse-nw8l.onrender.com", options)
 }
 
 export default socketInit

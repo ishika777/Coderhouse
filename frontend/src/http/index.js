@@ -1,7 +1,7 @@
 import axios from "axios"
 
 const api = axios.create({
-    baseURL : "http://localhost:3000",
+    baseURL : "https://coderhouse-nw8l.onrender.com",
     withCredentials : true,
     headers : {
         "Content-Type" : "application/json",
@@ -108,7 +108,7 @@ api.interceptors.response.use((config) => {return config}, async (error) => {
     if(error.response.status === 401 && originalRequest && !originalRequest._isRetry){
         originalRequest.isRetry = true;
         try{
-            await axios.get("http://localhost:3000/api/refresh", {
+            await axios.get("https://coderhouse-nw8l.onrender.com/api/refresh", {
                 withCredentials : true
             })
 
