@@ -7,6 +7,8 @@ const cookieParser = require("cookie-parser")
 const mongoose = require('mongoose');
 const ACTIONS = require("./actions");
 const server = require("http").createServer(app);
+const path = require("path")
+const Router = require("./routes/auth-route");
 const io = require("socket.io")(server, {
     cors : {
         origin : "http://localhost:5173",
@@ -15,12 +17,11 @@ const io = require("socket.io")(server, {
 })
 
 
-const Router = require("./routes/auth-route");
-const { getDefaultAutoSelectFamilyAttemptTimeout } = require("net");
 
+const _dirname = path.resolve()
 app.use(cookieParser())
 const corsOptions = {
-    origin : ["https://coderhouse-teal.vercel.app/"],
+    origin : ["http://localhost:5173"],
     methods : ["GET", "POST"],
     credentials : true
 }
@@ -29,14 +30,13 @@ app.use(cors(corsOptions))
 app.use("/storage", express.static("storage"))
 
 const url = process.env.DB_URL
-// const url = "mongodb://127.0.0.1:27017/webrtc"
 
 main().then(() => console.log("connected to db")).catch(err => console.log(err));
 
 async function main() {
   await mongoose.connect(url, {useNewUrlParser: true, 
     useUnifiedTopology: true,
-    connectTimeoutMS: 30000, // Increased timeout duration
+    connectTimeoutMS: 30000, 
     socketTimeoutMS: 45000, 
     ssl: true,
     retryWrites: true});
@@ -48,9 +48,6 @@ app.use(express.json({limit : "8mb"}));
 app.use("/", Router)
 
 
-app.get("*", (req, res) => {
-    res.send("hello")
-})
 
 
 const socketUserMapping = {}
@@ -153,6 +150,12 @@ io.on("connection", (socket) => {
 
     socket.on(ACTIONS.LEAVE, leaveRoom)
     socket.on("disconnecting", leaveRoom)
+})
+
+app.use(express.static(path.join(_dirname, "frontend/dist")))
+
+app.get("*", (_, res) => {
+    res.sendFile(path.resolve(_dirname, "frontend", "dist", "index.html"))
 })
 
 server.listen(port, () => {
