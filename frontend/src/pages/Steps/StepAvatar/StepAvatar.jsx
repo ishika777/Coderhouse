@@ -43,7 +43,6 @@ const StepAvatar = ({onNext}) => {
         setLoading(true);
         try {
             const {data} = await activate({name, avatar})
-            console.log(data)
             if(data.auth){
                 if(!mounted){
                     dispatch(setAuth(data));

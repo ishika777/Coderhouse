@@ -19,7 +19,6 @@ class UserService{
         user.name = name;
         user.avatar = avatar;
         await user.save();
-        console.log("donee")
 
         return user;
     }

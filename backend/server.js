@@ -1,4 +1,4 @@
-require("dotenv").config();
+require("dotenv").config({path : "../.env"});
 const express = require("express");
 const app = express();
 const port = 3000
@@ -34,14 +34,12 @@ const url = process.env.DB_URL
 main().then(() => console.log("connected to db")).catch(err => console.log(err));
 
 async function main() {
-  await mongoose.connect(url, {useNewUrlParser: true, 
-    useUnifiedTopology: true,
+  await mongoose.connect(url, { 
     connectTimeoutMS: 30000, 
     socketTimeoutMS: 45000, 
     ssl: true,
     retryWrites: true});
 }
-
 
 
 app.use(express.json({limit : "8mb"}));

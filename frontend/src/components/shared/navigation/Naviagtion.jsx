@@ -27,7 +27,6 @@ const Naviagtion = () => {
     }
 
     const logoutUser = async () => {
-        console.log("h1")
         try {
             const {data} = await logout();
         
