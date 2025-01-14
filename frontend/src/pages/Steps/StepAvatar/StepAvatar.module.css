@@ -1,0 +1,35 @@
+.actionButtonWrap{
+    composes : actionButtonWrap from "../../../App.module.css";
+    margin-top: 15px;
+}
+.subHeading{
+    color: #c4c5c5;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+.avatarWrapper{
+    height: 120px;
+    width: 120px;
+    border: 4px solid #0077ff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+.avatar{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+.avatarInput{
+    display: none;
+}
+.avatarLabel{
+    color: #0077ff;
+    margin: 10px 0;
+    display: inline-block;
+    cursor: pointer;
+    font-size: 13px;
+}

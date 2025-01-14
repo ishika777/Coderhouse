@@ -1,0 +1,23 @@
+.card{
+    width: 450px;
+    max-width: 90vw;
+    min-height: fit-content;
+    background-color: #1D1D1D;
+    padding: 30px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.headingWrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+.heading{
+    font-size: 24px;
+    font-weight: bold;
+}
