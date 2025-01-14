@@ -111,11 +111,7 @@ api.interceptors.response.use((config) => {return config}, async (error) => {
             await axios.get("https://coderhouse-nw8l.onrender.com/api/refresh", {
                 withCredentials : true
             })
-
             return api.request(originalRequest);
-
-
-
         }catch(err){
             console.log(err.message)
         }
